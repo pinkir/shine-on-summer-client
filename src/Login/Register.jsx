@@ -2,23 +2,43 @@ import { useForm } from 'react-hook-form';
 import bg from '../images/bg2.jpg'
 import { useContext, useRef } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    // const location = useLocation();
+
+    // const from = location.state?.from?.pathname || "/"
+
+
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const password = useRef({});
     password.current = watch('password', '');
 
     const onSubmit = data => {
-        reset()
+
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
+                console.log(loggedUser);
+                
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        console.log('user pic')
+                        reset()
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'User SignUp successfully',
+        
+                        });
+                        navigate('/')
+                    })
+                    .catch(error => console.log(error))
             })
     };
 
@@ -49,7 +69,7 @@ const Register = () => {
                                 {...register("email", { required: true })}
                                 name="email"
                                 className="input input-bordered" />
-                                {errors.email && <span className='text-rose-500'>This field is required</span>}
+                            {errors.email && <span className='text-rose-500'>This field is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -78,14 +98,16 @@ const Register = () => {
                                 <span className="label-text">Confirm Password</span>
                             </label>
                             <input type="password" placeholder="confirm password"
-                                {...register("confirm", { required: true , 
-                                validate: (value) =>
-                                    value === password.current || 'Passwords do not match',})}
+                                {...register("confirm", {
+                                    required: true,
+                                    validate: (value) =>
+                                        value === password.current || 'Passwords do not match',
+                                })}
                                 name='confirm'
-                                
+
 
                                 className="input input-bordered" />
-                                {errors.confirm && <p>{errors.confirm.message}</p>}
+                            {errors.confirm && <p>{errors.confirm.message}</p>}
 
                         </div>
                         <div className="form-control">
@@ -101,7 +123,7 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-info" type="submit" value="Sign Up" />
-                            
+
                         </div>
                         <p>Already have an account?? Please <Link to='/login' className='text-blue-600 font-extrabold'>Login</Link></p>
                     </form>

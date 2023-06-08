@@ -1,14 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleLogOut = () => {
         logOut()
-            .then(() => {})
+            .then(() => {
+                navigate('/login')
+            })
             .catch(error => { console.log(error) })
 
     }
@@ -22,6 +25,7 @@ const Navber = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/instructors'>Instructors</Link></li>
+                        <li><Link to='/teacherinfo'>teachers</Link></li>
                         {user?.email ?
                             <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
@@ -38,6 +42,7 @@ const Navber = () => {
                 <ul className="menu menu-horizontal px-1 font-bold">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/instructors'>Instructors</Link></li>
+                    <li><Link to='/teacherinfo'>teachers</Link></li>
                     {user?.email ?
                         <>
                             <li><Link to='/dashboard'>Dashboard</Link></li>

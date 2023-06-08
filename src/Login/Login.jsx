@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import bg from '../images/bg2.jpg'
@@ -7,7 +7,12 @@ import Swal from "sweetalert2";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/"
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
 
     const onSubmit = data => {
         reset()
@@ -18,9 +23,10 @@ const Login = () => {
                 console.log(loggedUser)
                 Swal.fire({
                     icon: 'success',
-                    title: 'Cool',
+                    title: 'User login successfully',
                     
                   })
+                  navigate(from, {replace: true});
             })
             .catch((error) => {
                 console.log(error)

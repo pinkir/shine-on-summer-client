@@ -6,6 +6,9 @@ import Main from "../layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
+import TeacherInfo from "../pages/TeacherInfo/TeacherInfo";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>
+            },
+            {
+                path: "/teacherinfo",
+                element: <PrivateRoute><TeacherInfo></TeacherInfo></PrivateRoute>
+            },
+            {
+                path: "/dashboard",
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             }
         ]
     },
