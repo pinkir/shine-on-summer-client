@@ -64,8 +64,8 @@ const Navber = () => {
                                 </div>
 
                             </div>
+                            <input onClick={handleLogOut} className="btn  bg-sky-600 ml-2 text-white" type="submit" value="LogOut" />
                             
-                            <button onClick={handleLogOut} className="btn  bg-sky-600 ml-2 text-white">LogOut</button>
 
                         </>
                         :

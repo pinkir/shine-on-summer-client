@@ -9,8 +9,14 @@ import Register from "../Login/Register";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
 import TeacherInfo from "../pages/TeacherInfo/TeacherInfo";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
+    {
+        path: "*",
+        element: <Error></Error>
+
+    },
     {
         path: "/",
         element: <Main></Main>,

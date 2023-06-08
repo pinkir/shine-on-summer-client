@@ -1,13 +1,13 @@
-import { useContext, useRef, useState } from "react";
+import { useContext,  useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import bg from '../images/bg2.jpg'
 import Swal from "sweetalert2";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignUp } = useContext(AuthContext);
     const [passwordShown, setPasswordShown] = useState(false);
     
     const navigate = useNavigate();
@@ -15,6 +15,24 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/"
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+
+    const handleGoogle = () =>{
+        googleSignUp()
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            Swal.fire({
+                icon: 'success',
+                title: 'User login successfully',
+
+            })
+            navigate(from, { replace: true });
+        })
+        .catch(error =>{
+            console.log("error", error.message)
+        })
+    }
 
 
     const onSubmit = data => {
@@ -79,7 +97,7 @@ const Login = () => {
                                 className="input input-bordered" />
 
                             {errors.password?.type == 'required' && <span className='text-rose-500'>This field is required</span>}
-                            <FaEye onClick={togglePasswordVisiblity}></FaEye>
+                            <FaEye  onClick={togglePasswordVisiblity} style={{position: 'absolute', top:'43%' , right: '16%'}}></FaEye>
 
 
 
@@ -88,8 +106,11 @@ const Login = () => {
 
                         <div className="form-control mt-6">
                             <input className="btn btn-info" type="submit" value="Login" />
+                            
 
                         </div>
+                        <button onClick={handleGoogle} className="btn btn-success" ><FaGoogle></FaGoogle>Google Sign In</button>
+                        
                         <p>New to shine on summer?? Please <Link to='/register' className='text-blue-600 font-extrabold'>Sign Up</Link></p>
                     </form>
                 </div>

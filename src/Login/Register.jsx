@@ -4,16 +4,35 @@ import { useContext, useRef } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FaGoogle } from 'react-icons/fa';
 
 
 
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignUp } = useContext(AuthContext);
     const navigate = useNavigate();
     // const location = useLocation();
 
     // const from = location.state?.from?.pathname || "/"
+
+
+    const handleGoogle = () =>{
+        googleSignUp()
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            Swal.fire({
+                icon: 'success',
+                title: 'User login successfully',
+
+            })
+            navigate('/');
+        })
+        .catch(error =>{
+            console.log("error", error.message)
+        })
+    }
 
 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -27,7 +46,7 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                
+                reset();
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
                         console.log('user pic')
@@ -41,6 +60,7 @@ const Register = () => {
                     })
                     .catch(error => console.log(error))
             })
+            .catch(error => console.log(error))
     };
 
 
@@ -126,6 +146,7 @@ const Register = () => {
                             <input className="btn btn-info" type="submit" value="Sign Up" />
 
                         </div>
+                        <button onClick={handleGoogle} className="btn btn-success" ><FaGoogle></FaGoogle>Google Sign In</button>
                         <p>Already have an account?? Please <Link to='/login' className='text-blue-600 font-extrabold'>Login</Link></p>
                     </form>
                 </div>
