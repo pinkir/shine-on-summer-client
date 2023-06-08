@@ -2,8 +2,9 @@ import { useForm } from 'react-hook-form';
 import bg from '../images/bg2.jpg'
 import { useContext, useRef } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+
 
 
 
