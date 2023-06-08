@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import bg from '../images/bg2.jpg'
 import { useContext, useRef } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,7 +30,7 @@ const Register = () => {
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-sky-600 bg-opacity-20 my-8">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
-                            <h1 className="text-4xl font-bold">Please Sign in!</h1>
+                            <h1 className="text-4xl font-bold">Please Sign Up!</h1>
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
@@ -48,6 +49,7 @@ const Register = () => {
                                 {...register("email", { required: true })}
                                 name="email"
                                 className="input input-bordered" />
+                                {errors.email && <span className='text-rose-500'>This field is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -98,8 +100,10 @@ const Register = () => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-info">Sign Up</button>
+                            <input className="btn btn-info" type="submit" value="Sign Up" />
+                            
                         </div>
+                        <p>Already have an account?? Please <Link to='/login' className='text-blue-600 font-extrabold'>Login</Link></p>
                     </form>
                 </div>
             </div>
