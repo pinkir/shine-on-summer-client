@@ -8,6 +8,7 @@ const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [refetch, setRefetch] = useState(null);
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -45,7 +46,7 @@ const AuthProvider = ({children}) => {
             setLoading(false);
         });
         return unsubscribe();
-    },[])
+    },[refetch])
 
     const authInfo = {
         user,
@@ -54,7 +55,8 @@ const AuthProvider = ({children}) => {
         signIn,
         googleSignUp,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        setRefetch
 
     }
     return (

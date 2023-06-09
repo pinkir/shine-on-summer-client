@@ -10,7 +10,7 @@ import { FaGoogle } from 'react-icons/fa';
 
 
 const Register = () => {
-    const { createUser, updateUserProfile, googleSignUp } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignUp, setRefetch } = useContext(AuthContext);
     const navigate = useNavigate();
     // const location = useLocation();
 
@@ -48,7 +48,9 @@ const Register = () => {
                 console.log(loggedUser);
                 reset();
                 updateUserProfile(data.name, data.photo)
+
                     .then(() => {
+                        setRefetch(true);
                         console.log('user pic')
                         reset()
                         Swal.fire({

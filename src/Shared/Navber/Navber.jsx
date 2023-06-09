@@ -1,23 +1,24 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
 const Navber = () => {
-    const { user, logOut } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const { user, logOut, setRefetch } = useContext(AuthContext);
+    
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                navigate('/login')
+                setRefetch(false);
+                
             })
             .catch(error => { console.log(error) })
 
     }
     return (
-        <div className="navbar bg-black fixed z-10 bg-opacity-30 text-white max-w-screen-xl mx-auto ">
+        <div className="navbar bg-black fixed z-10 bg-opacity-50 text-white max-w-screen-xl mx-auto ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

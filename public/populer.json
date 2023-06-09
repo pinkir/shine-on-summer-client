@@ -1,0 +1,65 @@
+[
+    {
+      "class_name": "Beginner Swim Lessons",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 24,
+      "price": 38,
+      "seats": 39,
+      "instractor_name": "Marian Houston",
+      "description": "Fugiat nulla fugiat pariatur labore consequat. Dolore incididunt nostrud do consectetur. Sint est do incididunt nisi ea ullamco officia. Enim pariatur sint dolore laboris cillum nulla pariatur. Consequat incididunt exercitation pariatur esse ex deserunt proident aute enim. Ad fugiat magna in pariatur veniam nostrud commodo ipsum in ipsum ad nisi enim officia. Duis ex occaecat non enim cupidatat tempor non sint fugiat anim consectetur.\r\n"
+    },
+    {
+      "class_name": "Water Safety and Survival Skills",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 25,
+      "price": 38,
+      "seats": 34,
+      "instractor_name": "Josie Orr",
+      "description": "Tempor pariatur exercitation qui non qui mollit anim. Esse aliqua voluptate officia esse cillum do pariatur minim mollit consequat amet. Veniam duis id laboris ullamco sit proident enim veniam elit elit. Cillum occaecat deserunt ullamco exercitation nostrud quis id irure. Deserunt excepteur Lorem pariatur veniam dolor ipsum fugiat est voluptate consequat adipisicing velit veniam quis.\r\n"
+    },
+    {
+      "class_name": "Parent and Child Aquatics",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 25,
+      "price": 40,
+      "seats": 23,
+      "instractor_name": "Alyson Blankenship",
+      "description": "Officia nulla pariatur amet id irure eiusmod ipsum. Magna tempor sunt pariatur ea non quis. Sit laboris officia eu irure proident. Pariatur mollit excepteur Lorem consequat duis fugiat mollit elit.\r\n"
+    },
+    {
+      "class_name": "Adult Learn-to-Swim Programs",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 28,
+      "price": 30,
+      "seats": 35,
+      "instractor_name": "Margo Kim",
+      "description": "Do dolor Lorem est ullamco mollit exercitation. Velit nisi et velit occaecat Lorem anim ullamco. Non incididunt reprehenderit proident nisi deserunt ullamco amet et consectetur enim. Aliqua aliquip consequat voluptate eiusmod occaecat et aliqua voluptate non nisi ipsum ipsum.\r\n"
+    },
+    {
+      "class_name": "Open Water Swimming Training",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 39,
+      "price": 36,
+      "seats": 20,
+      "instractor_name": "Sheri Witt",
+      "description": "Reprehenderit Lorem quis deserunt excepteur velit excepteur. Consequat occaecat aliqua ullamco exercitation excepteur in sunt occaecat consequat ea elit consequat id commodo. In tempor proident reprehenderit proident.\r\n"
+    },
+    {
+      "class_name": "Diving and Springboard Lessons",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 25,
+      "price": 22,
+      "seats": 24,
+      "instractor_name": "Sara House",
+      "description": "Qui nulla nisi incididunt ea in aute ex laborum sint qui ut et ipsum. Nisi cupidatat aliqua ipsum anim. Commodo magna elit laborum aliqua officia sunt occaecat ex nostrud ullamco elit sunt. Reprehenderit exercitation in Lorem eu eu occaecat minim nulla culpa. Nisi qui pariatur eu enim tempor duis irure eu.\r\n"
+    },
+    {
+      "class_name": "Synchronized Swimming Classes",
+      "class_picture": "http://placehold.it/32x32",
+      "students": 26,
+      "price": 38,
+      "seats": 26,
+      "instractor_name": "Leonor Conley",
+      "description": "Nostrud dolore cillum ad velit nisi veniam cillum nulla qui ad. Incididunt do aute id sunt esse velit adipisicing Lorem non eiusmod cillum proident. Ullamco mollit velit officia cupidatat. Non veniam dolore dolore veniam. Occaecat est exercitation sunt sunt et exercitation nulla cillum ullamco. Voluptate ut aliqua anim proident sunt. Irure ad adipisicing eu ad labore aliqua.\r\n"
+    }
+  ]
