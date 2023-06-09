@@ -1,5 +1,4 @@
-import gallary1 from '../../../images/gallary1.jpg'
-import gallary2 from '../../../images/gallary2.jpg'
+
 import gallary3 from '../../../images/gallary3.jpg'
 import gallary4 from '../../../images/gallary4.jpg'
 import gallary5 from '../../../images/gallary5.jpg'
@@ -13,7 +12,7 @@ const Gallary = () => {
        
             <div className='max-w-7xl mx-auto'>
                 <h3 className='text-center text-sky-600 text-4xl font-bold p-5 mt-40'>Photo Gallery</h3>
-                <p className='text-center text-stone-400'>A group of joyful and enthusiastic students immerse themselves in the refreshing waters, <br /> radiating happiness with every stroke. Their smiles reflect their love for swimming as they <br /> embrace the waters embrace, enjoying the freedom, fun, and camaraderie that comes with their aquatic adventures. <br /> Their laughter echoes through the pool, embodying pure swimming bliss.</p>
+                <p className='text-center text-stone-400 mb-20'>A group of joyful and enthusiastic students immerse themselves in the refreshing waters, <br /> radiating happiness with every stroke. Their smiles reflect their love for swimming as they <br /> embrace the waters embrace, enjoying the freedom, fun, and camaraderie that comes with their aquatic adventures. <br /> Their laughter echoes through the pool, embodying pure swimming bliss.</p>
                 <div className='grid grid-cols-3 gap-2 bg-slate-100 p-5' >
 
                     <div data-aos="fade-up" className='h-3 mb-2'>
