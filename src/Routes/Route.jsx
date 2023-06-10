@@ -11,6 +11,7 @@ import Dashboard from "../layout/Dashboard";
 import Error from "../pages/Error/Error";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import MyCart from "../pages/Dashboard/MyCart/MyCart";
 
 const router = createBrowserRouter([
     {
@@ -42,12 +43,19 @@ const router = createBrowserRouter([
                 path: "/instructors",
                 element: <Instructors></Instructors>
             },
-            {
-                path: "/dashboard",
-                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-            }
+            
         ]
     },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "mycart",
+                element: <MyCart></MyCart> 
+            }
+        ]
+    }
 ]);
 
 

@@ -30,7 +30,7 @@ const Navber = () => {
                         <li><Link to='/classes'>Classes</Link></li>
                         {user?.email ?
                             <>
-                                <li><Link to='/dashboard'>Dashboard</Link></li>
+                                <li><Link to='/dashboard/mycart'>Dashboard</Link></li>
 
                             </>
                             :
@@ -44,10 +44,10 @@ const Navber = () => {
                 <ul className="menu menu-horizontal px-1 font-bold ">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/instructors'>Instructors</Link></li>
-                    <li><Link to='/classes'>classes</Link></li>
+                    <li><Link to='/classes'>Classes</Link></li>
                     {user?.email ?
                         <>
-                            <li><Link to='/dashboard'>Dashboard</Link></li>
+                            <li><Link to='/dashboard/mycart'>Dashboard</Link></li>
 
                         </>
                         :
