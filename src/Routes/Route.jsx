@@ -12,6 +12,7 @@ import Error from "../pages/Error/Error";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: "mycart",
                 element: <MyCart></MyCart> 
+            },
+            {
+                path: "allusers",
+                element: <AllUsers></AllUsers>
             }
         ]
     }

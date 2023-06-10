@@ -1,9 +1,14 @@
-import {  FaHome,  FaSearchPlus, FaShoppingCart,  FaUser, FaUserGraduate } from "react-icons/fa";
+import { FaBook, FaHome, FaSearchPlus, FaShoppingCart, FaUser, FaUserGraduate, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 
+
 const Dashboard = () => {
-    
+    // const [cart] = useCart();
+
+    // TODO
+    const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -15,19 +20,44 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full  bg-sky-500 text-base-content">
-                    {/* Sidebar content here */}
-                    
-                    
-                    <li><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
+                    {
+                        isAdmin
+                            ?
+
+                            <>
+                                <li><NavLink to='/'><FaHome></FaHome>Admin Home</NavLink></li>
+                                <li><NavLink to='/classes'><FaSearchPlus></FaSearchPlus> Classes</NavLink></li>
+                                <li><NavLink to='/instructors'><FaUser></FaUser>Instructors</NavLink></li>
+                                <div className="divider"></div>
+
+                                <li><NavLink to='/dashboard/mycart'><FaBook></FaBook> Manage Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li>
+                            </>
+
+                            :
+
+                            <>
+                                <li><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
+                                <li><NavLink to='/classes'><FaSearchPlus></FaSearchPlus>Select More Classes</NavLink></li>
+                                <li><NavLink to='/instructors'><FaUser></FaUser>Instructors</NavLink></li>
+                                <div className="divider"></div>
+
+                                <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/enrolled'><FaUserGraduate></FaUserGraduate>My Enrolled Classes</NavLink></li>
+                            </>
+                    }
+
+
+                    {/* <li><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
                     <li><NavLink to='/classes'><FaSearchPlus></FaSearchPlus>Select More Classes</NavLink></li>
                     <li><NavLink to='/instructors'><FaUser></FaUser>Instructors</NavLink></li>
                     <div className="divider"></div>
 
                     <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
-                    <li><NavLink to='/dashboard/enrolled'><FaUserGraduate></FaUserGraduate>My Enrolled Classes</NavLink></li>
-                    
-                    
-                    
+                    <li><NavLink to='/dashboard/enrolled'><FaUserGraduate></FaUserGraduate>My Enrolled Classes</NavLink></li> */}
+
+
+
                 </ul>
 
             </div>
