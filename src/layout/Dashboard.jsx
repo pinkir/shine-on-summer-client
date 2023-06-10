@@ -1,9 +1,12 @@
+
 import { FaBook, FaHome, FaSearchPlus, FaShoppingCart, FaUser, FaUserGraduate, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 
 
+
 const Dashboard = () => {
+    
     // const [cart] = useCart();
 
     // TODO
@@ -20,6 +23,7 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full  bg-sky-500 text-base-content">
+                    
                     {
                         isAdmin
                             ?

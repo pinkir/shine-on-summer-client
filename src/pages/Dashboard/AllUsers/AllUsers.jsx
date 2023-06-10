@@ -29,6 +29,27 @@ const AllUsers = () => {
         })
     }
 
+    const handleMakeInstructor =(user) =>{
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} is an instructor now`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+            }
+        })
+    }
+
 
     const handleDelete = (user) => {
         Swal.fire({
@@ -109,16 +130,17 @@ const AllUsers = () => {
 
                                     </td>
                                     <td className="">{user.email}</td>
-                                    <td >
+                                    <td  className="">
                                         {user.role === 'admin'? 'admin' : 
-                                        <div className=" flex gap-2">
+                                    
 
-                                            <button onClick={()=>handleMakeAdmin(user)} className="btn btn-success btn-sm " >Admin</button>
+                                            <button onClick={()=>handleMakeAdmin(user)} className="btn btn-success btn-sm mr-5" >Admin</button>
 
-
-                                            <button className="btn btn-warning btn-sm ">Instructor</button>
-
-                                        </div>
+                                        
+                                        }
+                                        { user.role === 'instructor' ?
+                                        'instructor':
+                                            <button onClick={()=>handleMakeInstructor(user)} className="btn btn-warning btn-sm ml-5 ">Instructor</button>
                                         }
                                     </td>
 
