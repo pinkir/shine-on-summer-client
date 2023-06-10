@@ -13,6 +13,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddAClass from "../pages/Dashboard/AddAClass/AddAClass";
 
 const router = createBrowserRouter([
     {
@@ -58,7 +59,21 @@ const router = createBrowserRouter([
             {
                 path: "allusers",
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: "addaclass",
+                element: <AddAClass></AddAClass>
             }
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: "addaclass",
+                element: <AddAClass></AddAClass>
+            },
         ]
     }
 ]);
