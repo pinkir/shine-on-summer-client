@@ -4,12 +4,13 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import bg from '../images/bg2.jpg'
 import Swal from "sweetalert2";
-import { FaEye, FaGoogle } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
 
-    const { signIn, googleSignUp, setRefetch} = useContext(AuthContext);
+    const { signIn,  setRefetch} = useContext(AuthContext);
     const [passwordShown, setPasswordShown] = useState(false);
 
     const navigate = useNavigate();
@@ -19,22 +20,22 @@ const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
 
-    const handleGoogle = () => {
-        googleSignUp()
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'User login successfully',
+    // const handleGoogle = () => {
+    //     googleSignUp()
+    //         .then(result => {
+    //             const loggedUser = result.user;
+    //             console.log(loggedUser)
+    //             Swal.fire({
+    //                 icon: 'success',
+    //                 title: 'User login successfully',
 
-                })
-                navigate(from, { replace: true });
-            })
-            .catch(error => {
-                console.log("error", error.message)
-            })
-    }
+    //             })
+    //             navigate(from, { replace: true });
+    //         })
+    //         .catch(error => {
+    //             console.log("error", error.message)
+    //         })
+    // }
 
 
     const onSubmit = data => {
@@ -118,7 +119,8 @@ const Login = () => {
 
 
                             </div>
-                            <button onClick={handleGoogle} className="btn btn-success" ><FaGoogle></FaGoogle>Google Sign In</button>
+                            
+                            <SocialLogin></SocialLogin>
 
                             <p>New to shine on summer?? Please <Link to='/register' className='text-blue-600 font-extrabold'>Sign Up</Link></p>
                         </form>

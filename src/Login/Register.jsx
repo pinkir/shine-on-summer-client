@@ -2,37 +2,22 @@ import { useForm } from 'react-hook-form';
 import bg from '../images/bg2.jpg'
 import { useContext, useRef } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { FaGoogle } from 'react-icons/fa';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 
 
 const Register = () => {
-    const { createUser, updateUserProfile, googleSignUp, setRefetch } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setRefetch } = useContext(AuthContext);
     const navigate = useNavigate();
     // const location = useLocation();
 
     // const from = location.state?.from?.pathname || "/"
 
 
-    const handleGoogle = () =>{
-        googleSignUp()
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
-            Swal.fire({
-                icon: 'success',
-                title: 'User login successfully',
-
-            })
-            navigate('/');
-        })
-        .catch(error =>{
-            console.log("error", error.message)
-        })
-    }
+    
 
 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -52,13 +37,28 @@ const Register = () => {
                     .then(() => {
                         setRefetch(true);
                         console.log('user pic')
-                        reset()
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'User SignUp successfully',
-        
-                        });
-                        navigate('/')
+                        const saveUser = { name: data.name, email: data.email, photo: data.photo}
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'User SignUp successfully',
+
+                                    });
+                                    navigate('/')
+
+                                }
+                            })
+
                     })
                     .catch(error => console.log(error))
             })
@@ -148,7 +148,7 @@ const Register = () => {
                             <input className="btn btn-info" type="submit" value="Sign Up" />
 
                         </div>
-                        <button onClick={handleGoogle} className="btn btn-success" ><FaGoogle></FaGoogle>Google Sign In</button>
+                        <SocialLogin></SocialLogin>
                         <p>Already have an account?? Please <Link to='/login' className='text-blue-600 font-extrabold'>Login</Link></p>
                     </form>
                 </div>
