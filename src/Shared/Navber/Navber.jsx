@@ -18,7 +18,7 @@ const Navber = () => {
 
     }
     return (
-        <div className="navbar bg-black fixed z-10 bg-opacity-50 text-white max-w-screen-xl mx-auto ">
+        <div className="navbar bg-black fixed z-10 top-0 bg-opacity-50 text-white max-w-screen-xl mx-auto ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,7 +27,7 @@ const Navber = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/instructors'>Instructors</Link></li>
-                        <li><Link to='/teacherinfo'>teachers</Link></li>
+                        <li><Link to='/classes'>Classes</Link></li>
                         {user?.email ?
                             <>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
@@ -44,7 +44,7 @@ const Navber = () => {
                 <ul className="menu menu-horizontal px-1 font-bold ">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/instructors'>Instructors</Link></li>
-                    <li><Link to='/teacherinfo'>teachers</Link></li>
+                    <li><Link to='/classes'>classes</Link></li>
                     {user?.email ?
                         <>
                             <li><Link to='/dashboard'>Dashboard</Link></li>
