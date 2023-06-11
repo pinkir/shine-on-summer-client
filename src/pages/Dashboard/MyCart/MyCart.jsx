@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
@@ -93,6 +94,8 @@ const MyCart = () => {
                                     <td className="text-end">${row.price}</td>
                                     <td>
                                         <FaTrashAlt onClick={() => handleDelete(row)} className=" text-red-600 text-2xl"></FaTrashAlt>
+
+                                        <Link to="/dashboard/payment"><button className="btn btn-sm mt-3 bg-green-500">Pay</button></Link>
                                     </td>
                                 </tr>)
                             }

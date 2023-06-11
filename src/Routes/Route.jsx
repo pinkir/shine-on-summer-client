@@ -16,6 +16,7 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddAClass from "../pages/Dashboard/AddAClass/AddAClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import ManageCls from "../pages/Dashboard/ManageCls/ManageCls";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -77,7 +78,12 @@ const router = createBrowserRouter([
             {
                 path: "managecls",
                 element: <ManageCls></ManageCls>
+            },
+            {
+                path: "payment",
+                element: <Payment></Payment>
             }
+            
         ]
     }
     
