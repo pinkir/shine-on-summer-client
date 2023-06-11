@@ -63,19 +63,14 @@ const router = createBrowserRouter([
             {
                 path: "addaclass",
                 element: <AddAClass></AddAClass>
-            }
-        ]
-    },
-    {
-        path: "/dashboard",
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-        children: [
+            },
             {
                 path: "addaclass",
                 element: <AddAClass></AddAClass>
             },
         ]
     }
+    
 ]);
 
 

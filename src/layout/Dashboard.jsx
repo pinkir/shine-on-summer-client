@@ -5,9 +5,6 @@ import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
 
 
-
-
-
 const Dashboard = () => {
 
     // const [cart] = useCart();
@@ -40,6 +37,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/instructors'><FaUser></FaUser>Instructors</NavLink></li>
                                 <div className="divider"></div>
 
+                                <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/mycart'><FaBook></FaBook> Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li>
                             </>
@@ -56,6 +54,7 @@ const Dashboard = () => {
                                             <li><NavLink to='/instructors'><FaUser></FaUser>Instructors</NavLink></li>
                                             <div className="divider"></div>
 
+                                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
                                             <li><NavLink to='/dashboard/addaclass'><FaBook></FaBook> Add A Class</NavLink></li>
                                             <li><NavLink to='/dashboard/myclasses'><FaUsers></FaUsers>My Classes</NavLink></li>
                                         </>
