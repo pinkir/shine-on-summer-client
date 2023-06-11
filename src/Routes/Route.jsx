@@ -14,6 +14,8 @@ import Classes from "../pages/Classes/Classes";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddAClass from "../pages/Dashboard/AddAClass/AddAClass";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import ManageCls from "../pages/Dashboard/ManageCls/ManageCls";
 
 const router = createBrowserRouter([
     {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
                 path: "addaclass",
                 element: <AddAClass></AddAClass>
             },
+            {
+                path: "myclasses",
+                element: <MyClasses></MyClasses>
+            },
+            {
+                path: "managecls",
+                element: <ManageCls></ManageCls>
+            }
         ]
     }
     

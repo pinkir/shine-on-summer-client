@@ -5,7 +5,10 @@ import { Helmet } from 'react-helmet-async';
 import PopularInstractor from "../PopularInstractor/PopularInstractor";
 import About from "../About/About";
 
+
 const Home = () => {
+
+    
     return (
         <>
             <Helmet>

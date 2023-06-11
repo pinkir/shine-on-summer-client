@@ -38,7 +38,7 @@ const Dashboard = () => {
                                 <div className="divider"></div>
 
                                 <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
-                                <li><NavLink to='/dashboard/mycart'><FaBook></FaBook> Manage Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/managecls'><FaBook></FaBook> Manage Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/allusers'><FaUsers></FaUsers>Manage Users</NavLink></li>
                             </>
 

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { FaSun } from "react-icons/fa";
 
 
 
-const Navber = () => {
+const Navber = ({handleTheme}) => {
     const { user, logOut, setRefetch } = useContext(AuthContext);
     
 
@@ -56,6 +57,7 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <button onClick={handleTheme} className="btn btn-sm mr-3"><FaSun></FaSun></button>
                 {
                     user ?
                         <>
@@ -71,6 +73,7 @@ const Navber = () => {
                         </>
                         :
                         <Link to='/login' className="btn  bg-sky-600 text-white">Login</Link>
+                        
                 }
             </div>
         </div>
