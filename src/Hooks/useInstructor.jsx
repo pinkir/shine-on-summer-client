@@ -11,7 +11,7 @@ const useInstructor =() =>{
         queryFn: async ()=>{
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`)
             console.log('ins res', res)
-            return res.data.admin;
+            return res.data.instructor;
         }
     })
     return [isInstructor, isInstructorLoading]

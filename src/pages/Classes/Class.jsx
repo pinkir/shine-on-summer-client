@@ -6,14 +6,17 @@ import { useContext } from "react";
 import useCart from "../../Hooks/useCart";
 
 
+
 const Class = ({cls}) => {
     const {_id, class_picture, class_name, instractor_name, seats, price } = cls;
+
 
     const [, refetch] = useCart()
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+
 
     const handleAddToCart = (cls) => {
         console.log(cls);
@@ -58,6 +61,14 @@ const Class = ({cls}) => {
 
 
     }
+
+    // const b = document.getElementById('bd');
+
+    // if(user?.role === 'admin' || user?.role === 'instructor'){
+    //     b.disabled = true;
+    // }
+
+
     return (
         <div  className="card w-80 bg-base-100 shadow-xl">
             <figure><img className="h-[200px]" src={class_picture} alt="Shoes" /></figure>
@@ -68,7 +79,7 @@ const Class = ({cls}) => {
                 <p className="flex items-center gap-2"><FaChair className="text-sky-600"></FaChair> Available Seats: {seats}</p>
                 <p className="flex items-center gap-2"><FaMoneyBill className="text-sky-600"></FaMoneyBill> Price: ${price}/Person</p>
                 {/* <p className="flex items-center gap-2">{cls.description}</p> */}
-                <button onClick={() => handleAddToCart(cls)} className="btn btn-ghost border-b-4 border-yellow-400">Enroll</button>
+                <button onClick={() => handleAddToCart(cls)} className="btn btn-ghost border-b-4 border-yellow-400" id="bd">Enroll</button>
 
             </div>
         </div>
