@@ -9,6 +9,9 @@
 * Instructor can add a class and see their classes.
 * Normal user can enroll classes and pay for the each one. they can see their enrolled classes.
 
+### Features 
+vite.js, TailwindCSS, daisyUi, javascript, express.js, mongoDb, framer-motion, react-hook-form, firebase 
+
 
 ### LIVE LINK
 
