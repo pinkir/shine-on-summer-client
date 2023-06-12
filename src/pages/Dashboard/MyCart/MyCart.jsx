@@ -3,9 +3,11 @@ import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
+
 const MyCart = () => {
     const [cart, refetch] = useCart();
     
+
     // how reduce works??
     const total = cart.reduce((sum, cls) => cls.price + sum, 0)
 
@@ -40,6 +42,8 @@ const MyCart = () => {
         })
     }
 
+    
+
 
 
 
@@ -51,7 +55,7 @@ const MyCart = () => {
             <div className="uppercase font-bold flex gap-10 m-8">
                 <h4>Classes: {cart.length}</h4>
                 <h4> Total: ${total}</h4>
-                <button className="btn btn-sm bg-green-500">Pay</button>
+
             </div>
             <div className="w-full font-semibold">
                 <div className="overflow-x-auto ">
@@ -95,7 +99,7 @@ const MyCart = () => {
                                     <td>
                                         <FaTrashAlt onClick={() => handleDelete(row)} className=" text-red-600 text-2xl"></FaTrashAlt>
 
-                                        <Link to="/dashboard/payment"><button className="btn btn-sm mt-3 bg-green-500">Pay</button></Link>
+                                        <Link to={`/dashboard/payment/${row._id}`} ><button className="btn btn-sm mt-3 bg-green-500">Pay</button></Link>
                                     </td>
                                 </tr>)
                             }

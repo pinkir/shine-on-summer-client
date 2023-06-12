@@ -17,6 +17,7 @@ import AddAClass from "../pages/Dashboard/AddAClass/AddAClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import ManageCls from "../pages/Dashboard/ManageCls/ManageCls";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import MyEnroll from "../pages/Dashboard/MyEnroll/MyEnroll";
 
 const router = createBrowserRouter([
     {
@@ -80,9 +81,18 @@ const router = createBrowserRouter([
                 element: <ManageCls></ManageCls>
             },
             {
-                path: "payment",
-                element: <Payment></Payment>
+                path: "payment/:id",
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
+            },
+            {
+                path: "myenroll",
+                element: <MyEnroll></MyEnroll>
             }
+
+
+            
+
             
         ]
     }

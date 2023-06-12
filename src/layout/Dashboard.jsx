@@ -68,7 +68,7 @@ const Dashboard = () => {
                                             <div className="divider"></div>
 
                                             <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>My Selected Classes</NavLink></li>
-                                            <li><NavLink to='/dashboard/enrolled'><FaUserGraduate></FaUserGraduate>My Enrolled Classes</NavLink></li>
+                                            <li><NavLink to='/dashboard/myenroll'><FaUserGraduate></FaUserGraduate>My Enrolled Classes</NavLink></li>
                                         </>
                                 }
                             </>
