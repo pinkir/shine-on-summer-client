@@ -11,7 +11,7 @@ const MyClasses = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/classes/${user?.email}`)
+        fetch(`https://shine-on-summer-server.vercel.app/classes/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyClasses(data)
@@ -31,7 +31,7 @@ const MyClasses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/classes/${myCls._id}`, {
+                fetch(`https://shine-on-summer-server.vercel.app/classes/${myCls._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

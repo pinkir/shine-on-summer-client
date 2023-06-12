@@ -20,7 +20,7 @@ const Home = () => {
                 <PopularClasses></PopularClasses>
                 <PopularInstractor></PopularInstractor>
                 <About></About>
-                {/* <Zoom></Zoom> */}
+                <Zoom></Zoom>
                 <Gallary></Gallary>
             </div>
         </>

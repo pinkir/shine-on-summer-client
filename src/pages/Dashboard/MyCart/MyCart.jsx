@@ -23,7 +23,7 @@ const MyCart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/carts/${cls._id}`, {
+                fetch(`https://shine-on-summer-server.vercel.app/carts/${cls._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

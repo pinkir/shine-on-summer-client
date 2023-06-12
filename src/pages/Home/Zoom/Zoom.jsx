@@ -1,19 +1,34 @@
-import zoom from '../../../images/swimming1.jpg'
+import zoom from '../../../images/sicon.png'
 
-import ReactImageZoom from 'react-image-zoom';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 
 const Zoom = () => {
 
-    const imageProps = {
-        width: 4000,
-        height: 250,
-        zoomWidth: 500,
-        img: `${zoom}`,
-      };
+    const { scrollYProgress } = useViewportScroll();
+    const yRange = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+
     return (
-        <div className='w-50'>
-            <ReactImageZoom {...imageProps}/>
+        <div style={{ height: '200vh' }}>
+            <div style={{ height: '100vh' }} />
+            <div
+                style={{
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                }}
+            >
+                <motion.img
+                    src={zoom}
+                    alt="Moving Image"
+                    style={{
+                        y: yRange,
+                    }}
+                />
+            </div>
+            <div style={{ height: '100vh' }} />
         </div>
     );
 };

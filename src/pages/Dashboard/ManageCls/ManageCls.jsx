@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import {  useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const ManageCls = () => {
 
-    const [disable, setDisable] = useState(false)
+    // const [disable, setDisable] = useState(false)
     // const [manage, setManage] = useState([]);
 
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/classes/pending`)
+    //     fetch(`https://shine-on-summer-server.vercel.app/classes/pending`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setManage(data)
@@ -29,14 +28,14 @@ const ManageCls = () => {
 
 
     const handleDeny = (pending) => {
-        fetch(`http://localhost:5000/classes/deny/${pending._id}`, {
+        fetch(`https://shine-on-summer-server.vercel.app/classes/deny/${pending._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-                    setDisable(true)
+                   
                     refetch();
                     Swal.fire({
                         position: 'top-end',
@@ -55,7 +54,7 @@ const ManageCls = () => {
     }
 
     const handleApprove = (pending) => {
-        fetch(`http://localhost:5000/classes/pending/${pending._id}`, {
+        fetch(`https://shine-on-summer-server.vercel.app/classes/pending/${pending._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -147,7 +146,7 @@ const ManageCls = () => {
                                                 className="btn btn-sm bg-green-500 ">Approve</button>
                                             <button
                                                 onClick={() => handleDeny(m)}
-                                                disabled={disable}
+                                                
                                                 className="btn btn-sm mx-3 bg-rose-400 ">Deny</button>
                                             <button className="btn btn-sm bg-yellow-400">Feedback</button>
                                         </td>

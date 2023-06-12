@@ -8,7 +8,7 @@ const MyEnroll = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payments/${user?.email}`)
+        fetch(`https://shine-on-summer-server.vercel.app/payments/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setEnrolled(data)

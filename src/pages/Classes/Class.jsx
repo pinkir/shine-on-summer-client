@@ -22,7 +22,7 @@ const Class = ({cls}) => {
         console.log(cls);
         if (user && user.email) {
             const enrollCls = {classId: _id, class_picture, class_name, instractor_name, seats, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://shine-on-summer-server.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

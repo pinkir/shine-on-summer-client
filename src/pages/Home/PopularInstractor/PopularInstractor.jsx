@@ -6,7 +6,7 @@ const PopularInstractor = () => {
     const [popularIns, setPopularIns] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/populerIns')
+        fetch('https://shine-on-summer-server.vercel.app/populerIns')
             .then(res => res.json())
             .then(data => setPopularIns(data))
     }, [])
