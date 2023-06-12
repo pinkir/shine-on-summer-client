@@ -1,47 +1,82 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import {  useState } from "react";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 const ManageCls = () => {
-    const [manage, setManage] = useState([]);
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+    const [disable, setDisable] = useState(false)
+    // const [manage, setManage] = useState([]);
 
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/classes/pending`)
-            .then(res => res.json())
-            .then(data => {
-                setManage(data)
-                console.log(data)
-            })
-    }, [])
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/classes/pending`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setManage(data)
+    //             console.log(data)
+    //         })
+    // }, [])
+
+    const [axiosSecure] = useAxiosSecure()
+    const { data: pending = [], refetch } = useQuery(['pending'], async () => {
+        const res = await axiosSecure.get('/classes/pending')
+        return res.data;
+    })
 
 
-    const handleApprove = (id) => {
-        const updateStatus = { status: 'approved' }
-        fetch(`http://localhost:5000/classes/pending/${id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateStatus)
 
+    const handleDeny = (pending) => {
+        fetch(`http://localhost:5000/classes/deny/${pending._id}`, {
+            method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+                console.log(data)
+                if (data.modifiedCount) {
+                    setDisable(true)
+                    refetch();
                     Swal.fire({
-                        title: 'success!',
-                        text: 'Class Approved',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'denied',
+                        showConfirmButton: false,
+                        timer: 1500
                     })
-                    setIsButtonDisabled(true);
-                }
+                    
 
+
+                }
             })
-    };
+
+            
+    }
+
+    const handleApprove = (pending) => {
+        fetch(`http://localhost:5000/classes/pending/${pending._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Approved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+
+                }
+            })
+
+            
+    }
 
 
 
@@ -49,7 +84,7 @@ const ManageCls = () => {
         <>
             <h1 className="text-3xl">Manage Classes</h1>
             <div className="uppercase font-bold flex gap-10 m-8 text-red-500">
-                <h4>Pending Classes: {manage.length}</h4>
+                <h4>Pending Classes: {pending.length}</h4>
 
             </div>
             <div className="w-full font-semibold">
@@ -72,46 +107,51 @@ const ManageCls = () => {
                         </thead>
                         <tbody>
                             {
-                                manage.map((m, index) => 
-                                <tr key={m._id}>
-                                    <td>
-                                        <label>
-                                            {index + 1}
-                                        </label>
-                                    </td>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={m.class_picture} alt="Avatar Tailwind CSS Component" />
+                                pending.map((m, index) =>
+                                    <tr key={m._id}>
+                                        <td>
+                                            <label>
+                                                {index + 1}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={m.class_picture} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
                                                 </div>
+
                                             </div>
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {m.class_name}
+                                        </td>
+                                        <td>
+                                            {m.class_name}
 
 
-                                    </td>
-                                    <td>
-                                        {m.students}
+                                        </td>
+                                        <td>
+                                            {m.students}
 
 
-                                    </td>
-                                    <td>
-                                        {m.seats}
+                                        </td>
+                                        <td>
+                                            {m.seats}
 
 
-                                    </td>
-                                    <td className="text-end">${m.price}</td>
-                                    <td className="">{m.status}</td>
-                                    <td>
-                                        <button onClick={()=>handleApprove(m)} disabled={isButtonDisabled} className="btn btn-sm bg-green-500 ">Approve</button>
-                                        <button className="btn btn-sm mx-3 bg-rose-400 ">Deny</button>
-                                        <button className="btn btn-sm bg-yellow-400">Feedback</button>
-                                    </td>
-                                </tr>)
+                                        </td>
+                                        <td className="text-end">${m.price}</td>
+                                        <td className="">{m.status}</td>
+                                        <td>
+                                            <button onClick={() => handleApprove(m)}
+
+                                                className="btn btn-sm bg-green-500 ">Approve</button>
+                                            <button
+                                                onClick={() => handleDeny(m)}
+                                                disabled={disable}
+                                                className="btn btn-sm mx-3 bg-rose-400 ">Deny</button>
+                                            <button className="btn btn-sm bg-yellow-400">Feedback</button>
+                                        </td>
+                                    </tr>)
                             }
 
 

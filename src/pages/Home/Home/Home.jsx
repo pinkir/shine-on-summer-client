@@ -4,6 +4,7 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import { Helmet } from 'react-helmet-async';
 import PopularInstractor from "../PopularInstractor/PopularInstractor";
 import About from "../About/About";
+import Zoom from "../Zoom/Zoom";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
                 <PopularClasses></PopularClasses>
                 <PopularInstractor></PopularInstractor>
                 <About></About>
+                {/* <Zoom></Zoom> */}
                 <Gallary></Gallary>
             </div>
         </>
